@@ -1,0 +1,34 @@
+{
+  "name": "node-imt",
+  "version": "1.0.0",
+  "description": "Open source dev for an end to end forum deployment",
+  "main": "index.js",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "express": "^4.17.1",
+    "morgan": "^1.10.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.4"
+  },
+  "scripts": {
+    "dev": "nodemon src/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LuisDFJ/node-imt.git"
+  },
+  "keywords": [
+    "nodejs",
+    "forum",
+    "saimt",
+    "react",
+    "mysql"
+  ],
+  "author": "Luis David Fuentes Juvera",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/LuisDFJ/node-imt/issues"
+  },
+  "homepage": "https://github.com/LuisDFJ/node-imt#readme"
+}
