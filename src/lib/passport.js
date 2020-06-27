@@ -5,7 +5,7 @@ const pool = require("../database");
 const helpers = require("./helpers");
 
 passport.use(
-  "local.sigin",
+  "local.signin",
   new LocalStrategy(
     {
       usernameField: "username",
@@ -51,10 +51,24 @@ passport.use(
         firstName,
         email,
       };
-      newUser.password = await helpers.encryptPassword(password);
-      const result = await pool.query("INSERT INTO users SET ?", [newUser]);
-      newUser.id = result.insertId;
-      return done(null, newUser);
+      const collisionUser = await pool.query(
+        "SELECT COUNT(*) AS count FROM users WHERE username = ?",
+        [newUser.username]
+      );
+      const collisionEmail = await pool.query(
+        "SELECT COUNT(*) AS count FROM users WHERE email = ?",
+        [newUser.email]
+      );
+      if (collisionUser[0].count) {
+        return done(null, false);
+      } else if (collisionEmail[0].count) {
+        return done(null, false);
+      } else {
+        newUser.password = await helpers.encryptPassword(password);
+        const result = await pool.query("INSERT INTO users SET ?", [newUser]);
+        newUser.id = result.insertId;
+        return done(null, newUser);
+      }
     }
   )
 );
