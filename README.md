@@ -28,16 +28,8 @@ Use **NPM** to install all the dependencies and dev-dependencies.
 
 The app runs on a **MySQL** database. The queries needed to set up the database can be found at _database/db.sql_. Once logged in **_MySQL Shell_** run:
 
-> mysql > CREATE DATABASE _database_name_ ;
-> mysql> CREATE TABLE users (
-> &emsp;&emsp;&ensp;&ensp;> &emsp;id SERIAL NOT NULL,
-> &emsp;&emsp;&ensp;&ensp;> &emsp;username VARCHAR(32) NOT NULL,
-> &emsp;&emsp;&ensp;&ensp;> &emsp;password VARCHAR(60) NOT NULL,
-> &emsp;&emsp;&ensp;&ensp;> &emsp;firstName VARCHAR(128) NOT NULL,
-> &emsp;&emsp;&ensp;&ensp;> &emsp;lastName VARCHAR(128) NOT NULL,
-> &emsp;&emsp;&ensp;&ensp;> &emsp;email VARCHAR(255) NOT NULL,
-> &emsp;&emsp;&ensp;&ensp;> &emsp;PRIMARY KEY (id)
-> &emsp;&emsp;&ensp;&ensp;> );
+> mysql > CREATE DATABASE _database_name_ ;<br/>
+> mysql> CREATE TABLE users (<br/> > &emsp;&emsp;&ensp;&ensp;> &emsp;id SERIAL NOT NULL,<br/> > &emsp;&emsp;&ensp;&ensp;> &emsp;username VARCHAR(32) NOT NULL,<br/> > &emsp;&emsp;&ensp;&ensp;> &emsp;password VARCHAR(60) NOT NULL,<br/> > &emsp;&emsp;&ensp;&ensp;> &emsp;firstName VARCHAR(128) NOT NULL,<br/> > &emsp;&emsp;&ensp;&ensp;> &emsp;lastName VARCHAR(128) NOT NULL,<br/> > &emsp;&emsp;&ensp;&ensp;> &emsp;email VARCHAR(255) NOT NULL,<br/> > &emsp;&emsp;&ensp;&ensp;> &emsp;PRIMARY KEY (id)<br/> > &emsp;&emsp;&ensp;&ensp;> );<br/>
 
 In order to verify this step, use the following command:
 
@@ -56,16 +48,10 @@ You should have the following response:
 
 **_MySQL.js_** doesn't supports auth run for **MySQL 8.0** _caching_sha2_password_, in order to over-run this:
 
-> mysql> ALTER USER 'root'@'localhost' IDENTIFIED WITHmysql_native_password BY 'newPassword';
+> mysql> ALTER USER 'root'@'localhost' IDENTIFIED WITHmysql_native_password BY 'newPassword';<br/>
 > mysql> flush privileges;
 
 Finally, create a new file _src/keys.js_ **where**:
 
-> module.exports = {
-> &emsp; database: {
-> &emsp;&emsp;host: ["localhost"],
-> &emsp;&emsp;user: ["root"],
-> &emsp;&emsp;password: ["Password"],
-> &emsp;&emsp;database: ["Database name"],
-> &emsp;}
+> module.exports = {<br/> > &emsp; database: {<br/> > &emsp;&emsp;host: ["localhost"],<br/> > &emsp;&emsp;user: ["root"],<br/> > &emsp;&emsp;password: ["Password"],<br/> > &emsp;&emsp;database: ["Database name"],<br/> > &emsp;}<br/>
 > };
