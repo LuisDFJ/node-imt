@@ -11,9 +11,17 @@ USE database_node_imt;
 CREATE TABLE users (
     id SERIAL,
     username VARCHAR(32) NOT NULL,
-    -- password VARCHAR(60) NOT NULL,
+    password VARCHAR(60) NOT NULL,
+    firstName VARCHAR(128) NOT NULL,
+    lastName VARCHAR(128) NOT NULL,
+    email VARCHAR(255) NOT NULL,
     PRIMARY KEY (id)
 );
 --      TO VISUALIZE THE TABLE JUST CREATED     --
 DESCRIBE users;
- 
+--      TO CHANGE NATIVE PASSWORD IN MYSQL      --
+ALTER USER 'root'@'localhost' 
+IDENTIFIED WITH mysql_native_password
+BY 'newPassword';
+
+flush privileges;
